@@ -13,10 +13,13 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Defina a versão Node.js para 16
+
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          node-version: 16 # Defina explicitamente a versão Node.js para 16
 
       - name: Compile
         run: echo Hello, world!

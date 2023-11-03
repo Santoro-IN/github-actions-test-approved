@@ -1,43 +1,36 @@
 name: 'Deploy ASP.NET Core app to Azure Web App'
 
 on:
-  push:
-    branches:
-      - "main"
-
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: 'Approve the deployment'
+        required: true
+        type: boolean
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-
       # Checkout the repo
       - uses: actions/checkout@master
 
       # Run dotnet build and publish
       - name: dotnet build and publish
-        run: echo "OK "
-
-   
+        run: echo "OK"
 
   deploy-dev:
     runs-on: 'ubuntu-latest'
-    environment: 'dev'
     needs: build-and-publish
     steps:
-
-    
       # Deploy to web app
       - name: Deploy to Azure WebApp
         run: echo "OK"
 
   deploy-prod:
     runs-on: 'ubuntu-latest'
-    environment: 'prod'
     needs: [build-and-publish, deploy-dev]
     steps:
-
-
       # Deploy to web app
       - name: Deploy to Azure WebApp
         run: echo "OK"

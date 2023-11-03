@@ -29,6 +29,7 @@ jobs:
 
   deploy-prod:
     runs-on: 'ubuntu-latest'
+    environment: 'prod' # Use o nome do ambiente configurado
     needs: [build-and-publish, deploy-dev]
     steps:
       # Deploy to web app

@@ -22,7 +22,7 @@ jobs:
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
-      name: Development
+      name: dev
       url: 'http://dev.myapp.com'
     steps:
       - name: Deploy
@@ -34,7 +34,7 @@ jobs:
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
-      name: Staging
+      name: stg
       url: 'http://test.myapp.com'
     steps:
       - name: Deploy
@@ -45,7 +45,7 @@ jobs:
     needs: [DeployStaging]
     runs-on: ubuntu-latest
     environment: 
-      name: Production
+      name: prod
       url: 'http://www.myapp.com'
     steps:
       - name: Deploy
